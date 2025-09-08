@@ -1,0 +1,391 @@
+import React from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, Mail, Linkedin, Twitter, BookOpen, Sparkles, Briefcase, NotebookPen, MapPin, Phone, FileText, GraduationCap, HeartHandshake } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+// ---------- CONFIGURABLE PROFILE DATA ----------
+const PROFILE = {
+  name: "Adja Sakho",
+  title: "Engineer • Strategist • Builder",
+  tagline:
+    "ESTEEM @ Notre Dame | Healthtech innovation • Strategy consulting • Data-driven storytelling",
+  location: "South Bend, IN & Dakar, SN",
+  email: "hello@yourdomain.com", // replace
+  phone: "+1 (000) 000-0000", // replace
+  resumeUrl: "/Adja_Sakho_Resume.pdf", // replace with hosted file
+  headshotAlt: "Adja Sakho portrait",
+  socials: [
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/your-handle", icon: <Linkedin size={18} /> },
+    { label: "Twitter/X", href: "https://x.com/your-handle", icon: <Twitter size={18} /> },
+  ],
+};
+
+const HIGHLIGHTS = [
+  {
+    icon: <Sparkles className="h-5 w-5" />, 
+    title: "Pravida Health Capstone",
+    text: "Designing a predictive–preventive longevity platform; 50+ stakeholder interviews across the U.S.",
+  },
+  {
+    icon: <Briefcase className="h-5 w-5" />, 
+    title: "Strategy & Finance",
+    text: "Co-authored Senegal’s Industrial & Trade Policy 2050; $80M Digital Park business plan.",
+  },
+  {
+    icon: <BookOpen className="h-5 w-5" />, 
+    title: "Author",
+    text: "Poetry book — *Etcetera: A Conversation About Love*; building powerful, feminine narratives.",
+  },
+];
+
+const PROJECTS = [
+  {
+    title: "Pravida Health — Capstone",
+    role: "Product research & strategy",
+    year: "2025–26",
+    description:
+      "Validating problems for a preventative, personalized health platform. Interview design, privacy/regulatory review, market mapping.",
+    tags: ["Healthtech", "Longevity", "Interviews", "PMF"],
+    link: "#",
+  },
+  {
+    title: "WAW Health",
+    role: "Founder",
+    year: "2025",
+    description:
+      "Women-focused wellness ecosystem (WAW Femmes • WAW Neuro • WAW Immune). Content, community, product experiments.",
+    tags: ["Wellness", "Community", "Brand"],
+    link: "#",
+  },
+  {
+    title: "Hereditary Health Platform",
+    role: "Founder",
+    year: "2025",
+    description:
+      "A family health tree + guidance to surface hereditary risks and better conversations before marriage.",
+    tags: ["Genetics", "IoT", "UX Research"],
+    link: "#",
+  },
+  {
+    title: "Industrial & Trade Policy 2050",
+    role: "Strategy Consultant (A&A)",
+    year: "2024–25",
+    description:
+      "Contributed to Senegal’s national policy presented to the President; SME finance, industrialization, and ecosystem design.",
+    tags: ["Policy", "Strategy", "Finance"],
+    link: "#",
+  },
+];
+
+const WRITING = [
+  {
+    title: "On Building With Courage",
+    date: "Aug 2025",
+    url: "#",
+    snippet:
+      "Notes from founder-led sales, listening harder than your pitch, and designing with empathy for edge cases.",
+  },
+  {
+    title: "Health, Heritage, and Data",
+    date: "Jul 2025",
+    url: "#",
+    snippet: "Why family health trees can unlock better prevention in emerging markets.",
+  },
+];
+
+const TESTIMONIALS = [
+  {
+    quote:
+      "Adja combines strategic clarity with empathetic research. She gets CEOs to open up and turns insights into crisp actions.",
+    name: "Trevor Turner, MD",
+    title: "Co-founder, Pravida Health",
+  },
+  {
+    quote:
+      "A rare thinker–doer. She translates complex policy and finance into elegant narratives and roadmaps.",
+    name: "Senior Partner",
+    title: "Strategy Consulting",
+  },
+];
+
+const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
+  <a href={href} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+    {children}
+  </a>
+);
+
+const Section = ({ id, title, children }: { id: string; title: string; children: React.ReactNode }) => (
+  <section id={id} className="max-w-6xl mx-auto px-4 py-16 sm:py-24">
+    <div className="flex items-end justify-between gap-4 mb-8">
+      <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">{title}</h2>
+      <div className="h-px flex-1 bg-muted" />
+    </div>
+    {children}
+  </section>
+);
+
+const Hero = () => (
+  <div className="relative overflow-hidden">
+    <div className="absolute inset-0 bg-gradient-to-b from-muted/40 to-background pointer-events-none" />
+    <div className="max-w-6xl mx-auto px-4 pt-16 sm:pt-24 pb-12">
+      <div className="flex flex-col-reverse lg:flex-row items-center gap-10">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex-1"
+        >
+          <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs text-muted-foreground mb-4">
+            <GraduationCap size={14} /> ESTEEM @ Notre Dame
+          </div>
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight">
+            {PROFILE.name}
+          </h1>
+          <p className="mt-3 text-xl text-muted-foreground">{PROFILE.title}</p>
+          <p className="mt-4 text-muted-foreground max-w-2xl">{PROFILE.tagline}</p>
+
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <Button asChild>
+              <a href="#contact" className="inline-flex items-center gap-2"><Mail size={16} /> Contact</a>
+            </Button>
+            <Button variant="secondary" asChild>
+              <a href={PROFILE.resumeUrl} target="_blank" rel="noopener" className="inline-flex items-center gap-2">
+                <FileText size={16} /> Resume
+              </a>
+            </Button>
+            {PROFILE.socials.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center gap-2 rounded-full border px-3 py-2 text-sm hover:bg-muted/60"
+              >
+                {s.icon} <span className="sr-only">{s.label}</span>
+              </a>
+            ))}
+          </div>
+
+          <div className="mt-6 flex items-center gap-3 text-sm text-muted-foreground">
+            <MapPin size={16} /> {PROFILE.location}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="flex-1 w-full"
+        >
+          <div className="relative mx-auto aspect-[4/3] w-full max-w-md overflow-hidden rounded-3xl border bg-gradient-to-br from-background to-muted/50 shadow-sm">
+            {/* Headshot placeholder block. Replace with an <img> */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center p-6">
+                <div className="text-7xl">🧠</div>
+                <p className="mt-3 text-sm text-muted-foreground">Add a professional headshot here.</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Highlights */}
+      <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {HIGHLIGHTS.map((h, i) => (
+          <Card key={i} className="border-dashed">
+            <CardHeader className="pb-3 flex-row items-center gap-3">
+              <div className="rounded-xl border p-2">{h.icon}</div>
+              <CardTitle className="text-base">{h.title}</CardTitle>
+            </CardHeader>
+            <CardContent className="pt-0 text-sm text-muted-foreground">{h.text}</CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+const Projects = () => (
+  <Section id="projects" title="Selected Work">
+    <div className="grid md:grid-cols-2 gap-6">
+      {PROJECTS.map((p, i) => (
+        <Card key={i} className="group overflow-hidden hover:shadow-md transition-shadow">
+          <CardHeader>
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <CardTitle className="text-lg">{p.title}</CardTitle>
+                <p className="text-sm text-muted-foreground">{p.role} • {p.year}</p>
+              </div>
+              <Button variant="ghost" asChild className="opacity-70 group-hover:opacity-100">
+                <a href={p.link}>
+                  View <ArrowRight className="ml-1 h-4 w-4" />
+                </a>
+              </Button>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-muted-foreground mb-3">{p.description}</p>
+            <div className="flex flex-wrap gap-2">
+              {p.tags.map((t) => (
+                <span key={t} className="text-xs rounded-full border px-2 py-1 text-muted-foreground">{t}</span>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </Section>
+);
+
+const Writing = () => (
+  <Section id="writing" title="Writing & Press">
+    <div className="grid md:grid-cols-2 gap-6">
+      {WRITING.map((w, i) => (
+        <Card key={i}>
+          <CardHeader>
+            <CardTitle className="text-lg">{w.title}</CardTitle>
+            <p className="text-xs text-muted-foreground">{w.date}</p>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-muted-foreground mb-4">{w.snippet}</p>
+            <Button variant="secondary" asChild>
+              <a href={w.url} target="_blank" rel="noopener" className="inline-flex items-center gap-2">
+                Read <ArrowRight size={16} />
+              </a>
+            </Button>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </Section>
+);
+
+const Testimonials = () => (
+  <Section id="testimonials" title="What People Say">
+    <div className="grid md:grid-cols-2 gap-6">
+      {TESTIMONIALS.map((t, i) => (
+        <Card key={i} className="border-muted-foreground/20">
+          <CardContent className="pt-6">
+            <p className="text-base leading-relaxed">“{t.quote}”</p>
+            <p className="mt-4 text-sm font-medium">{t.name}</p>
+            <p className="text-xs text-muted-foreground">{t.title}</p>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </Section>
+);
+
+const About = () => (
+  <Section id="about" title="About">
+    <div className="grid lg:grid-cols-3 gap-8">
+      <div className="lg:col-span-2">
+        <p className="text-muted-foreground leading-relaxed">
+          I’m a Senegalese strategist and builder blending healthtech, finance, and product thinking. I communicate with clarity, ask smart questions, and ship. I’m currently pursuing the ESTEEM master’s at Notre Dame while leading a capstone with Pravida Health to shape a predictive–preventive longevity platform. Previously, I helped design Senegal’s Industrial & Trade Policy 2050 and created the $80M business case for the country’s first Digital Park.
+        </p>
+        <ul className="mt-6 grid sm:grid-cols-2 gap-3">
+          <li className="text-sm"><span className="font-medium">Zone of genius:</span> health & wellness, beauty products, writing</li>
+          <li className="text-sm"><span className="font-medium">Interests:</span> early disease detection, wearables, AI/LLMs</li>
+          <li className="text-sm"><span className="font-medium">Current goals:</span> launch a product in 2025 and publish a book</li>
+          <li className="text-sm"><span className="font-medium">Languages:</span> English, French (native), Wolof</li>
+        </ul>
+      </div>
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base">Capabilities</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2 text-sm text-muted-foreground">
+            <li>Customer discovery & founder-led sales</li>
+            <li>Product strategy & narrative design</li>
+            <li>Financial modeling & KPI dashboards</li>
+            <li>Policy analysis & stakeholder mapping</li>
+          </ul>
+        </CardContent>
+      </Card>
+    </div>
+  </Section>
+);
+
+const Contact = () => (
+  <Section id="contact" title="Get in Touch">
+    <div className="grid lg:grid-cols-3 gap-8 items-start">
+      <Card className="lg:col-span-2">
+        <CardHeader>
+          <CardTitle className="text-lg">Let’s build something meaningful</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <form action={`mailto:${PROFILE.email}`} method="post" encType="text/plain" className="grid sm:grid-cols-2 gap-4">
+            <input className="border rounded-xl px-3 py-2 text-sm" name="name" placeholder="Your name" required />
+            <input className="border rounded-xl px-3 py-2 text-sm" name="email" placeholder="Your email" required />
+            <input className="border rounded-xl px-3 py-2 text-sm sm:col-span-2" name="subject" placeholder="Subject" />
+            <textarea className="border rounded-xl px-3 py-2 text-sm sm:col-span-2 min-h-[120px]" name="message" placeholder="Your message" />
+            <Button className="sm:col-span-2" type="submit">
+              Send <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </form>
+          <p className="mt-3 text-xs text-muted-foreground">This uses your email client. For reliable delivery, replace with a form handler later.</p>
+        </CardContent>
+      </Card>
+
+      <div className="space-y-3">
+        <div className="flex items-center gap-2 text-sm"><Mail size={16} /> {PROFILE.email}</div>
+        <div className="flex items-center gap-2 text-sm"><Phone size={16} /> {PROFILE.phone}</div>
+        <div className="flex items-center gap-2 text-sm"><MapPin size={16} /> {PROFILE.location}</div>
+        <div className="flex items-center gap-2 text-sm"><HeartHandshake size={16} /> Open to: PM / Strategy / Healthtech</div>
+        <div className="flex flex-wrap gap-2 pt-2">
+          {PROFILE.socials.map((s) => (
+            <a key={s.label} href={s.href} target="_blank" rel="noopener" className="inline-flex items-center gap-2 rounded-full border px-3 py-2 text-xs">
+              {s.icon} {s.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </Section>
+);
+
+const Footer = () => (
+  <footer className="border-t mt-12">
+    <div className="max-w-6xl mx-auto px-4 py-8 text-sm text-muted-foreground flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div>© {new Date().getFullYear()} {PROFILE.name}. All rights reserved.</div>
+      <div className="flex items-center gap-4">
+        <NavLink href="#about">About</NavLink>
+        <NavLink href="#projects">Work</NavLink>
+        <NavLink href="#writing">Writing</NavLink>
+        <NavLink href="#contact">Contact</NavLink>
+      </div>
+    </div>
+  </footer>
+);
+
+export default function PersonalSite() {
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Top Nav */}
+      <header className="sticky top-0 z-40 w-full border-b backdrop-blur supports-[backdrop-filter]:bg-background/60 bg-background/80">
+        <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
+          <a href="#home" className="font-semibold tracking-tight">{PROFILE.name}</a>
+          <nav className="hidden sm:flex items-center gap-6">
+            <NavLink href="#about">About</NavLink>
+            <NavLink href="#projects">Work</NavLink>
+            <NavLink href="#writing">Writing</NavLink>
+            <Button asChild size="sm"><a href="#contact">Let’s talk</a></Button>
+          </nav>
+        </div>
+      </header>
+
+      <main id="home">
+        <Hero />
+        <About />
+        <Projects />
+        <Writing />
+        <Testimonials />
+        <Contact />
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
