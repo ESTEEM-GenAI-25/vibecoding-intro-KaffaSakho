@@ -6,73 +6,54 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 // ---------- CONFIGURABLE PROFILE DATA ----------
 const PROFILE = {
-  name: "Adja Sakho",
+  name: "Kaffa Sakho",
   title: "Engineer • Strategist • Builder",
   tagline:
-    "ESTEEM @ Notre Dame | Healthtech innovation • Strategy consulting • Data-driven storytelling",
-  location: "South Bend, IN & Dakar, SN",
-  email: "hello@yourdomain.com", // replace
-  phone: "+1 (000) 000-0000", // replace
+    "ESTEEM @ Notre Dame | Healthtech innovation • Strategy consulting",
+  location: "South Bend, IN ",
+  email: "asakho@nd.edu", // replace
   resumeUrl: "/Adja_Sakho_Resume.pdf", // replace with hosted file
   headshotAlt: "Adja Sakho portrait",
   socials: [
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/your-handle", icon: <Linkedin size={18} /> },
-    { label: "Twitter/X", href: "https://x.com/your-handle", icon: <Twitter size={18} /> },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/kaffa-sakho-a485b89b/", icon: <Linkedin size={18} /> },
   ],
 };
 
 const HIGHLIGHTS = [
   {
     icon: <Sparkles className="h-5 w-5" />, 
-    title: "Pravida Health Capstone",
-    text: "Designing a predictive–preventive longevity platform; 50+ stakeholder interviews across the U.S.",
+    title: "Pravida Health Graduate Capstone Project",
+    text: "Designing the go-to-market strategy for innovative preventive and personalized executive health solutions.",
   },
   {
     icon: <Briefcase className="h-5 w-5" />, 
     title: "Strategy & Finance",
-    text: "Co-authored Senegal’s Industrial & Trade Policy 2050; $80M Digital Park business plan.",
+    text: "Co-authored Senegal’s Industrial & Trade Policy 2050; Elaboration of the business plan for Senegal's First Digital Park.",
   },
   {
     icon: <BookOpen className="h-5 w-5" />, 
     title: "Author",
-    text: "Poetry book — *Etcetera: A Conversation About Love*; building powerful, feminine narratives.",
+    text: "Poetry book — *Etcetera: A Conversation About Love*",
   },
 ];
 
 const PROJECTS = [
   {
     title: "Pravida Health — Capstone",
-    role: "Product research & strategy",
+    role: "Graduate Strategy Consultant",
     year: "2025–26",
     description:
-      "Validating problems for a preventative, personalized health platform. Interview design, privacy/regulatory review, market mapping.",
-    tags: ["Healthtech", "Longevity", "Interviews", "PMF"],
+      "Validating problems for preventive and personalized executive health solutions.",
+    tags: ["Healthtech", "Longevity", "Personalized Healthcare"],
     link: "#",
   },
+
   {
-    title: "WAW Health",
-    role: "Founder",
-    year: "2025",
-    description:
-      "Women-focused wellness ecosystem (WAW Femmes • WAW Neuro • WAW Immune). Content, community, product experiments.",
-    tags: ["Wellness", "Community", "Brand"],
-    link: "#",
-  },
-  {
-    title: "Hereditary Health Platform",
-    role: "Founder",
-    year: "2025",
-    description:
-      "A family health tree + guidance to surface hereditary risks and better conversations before marriage.",
-    tags: ["Genetics", "IoT", "UX Research"],
-    link: "#",
-  },
-  {
-    title: "Industrial & Trade Policy 2050",
-    role: "Strategy Consultant (A&A)",
+    title: "A&A Strategy and Investment Advisory",
+    role: "Strategy Consultant",
     year: "2024–25",
     description:
-      "Contributed to Senegal’s national policy presented to the President; SME finance, industrialization, and ecosystem design.",
+      "Contributed to the elaboration of Senegal’s national industrial policy ",
     tags: ["Policy", "Strategy", "Finance"],
     link: "#",
   },
@@ -91,21 +72,6 @@ const WRITING = [
     date: "Jul 2025",
     url: "#",
     snippet: "Why family health trees can unlock better prevention in emerging markets.",
-  },
-];
-
-const TESTIMONIALS = [
-  {
-    quote:
-      "Adja combines strategic clarity with empathetic research. She gets CEOs to open up and turns insights into crisp actions.",
-    name: "Trevor Turner, MD",
-    title: "Co-founder, Pravida Health",
-  },
-  {
-    quote:
-      "A rare thinker–doer. She translates complex policy and finance into elegant narratives and roadmaps.",
-    name: "Senior Partner",
-    title: "Strategy Consulting",
   },
 ];
 
@@ -389,3 +355,4 @@ export default function PersonalSite() {
     </div>
   );
 }
+
