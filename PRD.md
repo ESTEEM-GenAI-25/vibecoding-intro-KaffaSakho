@@ -2,44 +2,43 @@
 
 ## 1. Project Overview
 - **Summary:**  
-  _One-sentence description of what this product is and why it exists._
+  _This is my personal website that highlights my skillsets and my experiences._
 
 - **Context/Background:**  
-  _Why this project is being created, relevant history, or inspiration._
+  _This website serves as a warm intro to friends and classmates._
 
 ## 2. Goals and Objectives
 - **Primary Goal(s):**  
-  _Main outcome the product should achieve._
+  _The website should drive the reader to want to contact me to collaborate._
 
 - **Secondary Goal(s):**  
-  _Additional but less critical objectives._
+  _It should represent and portray well my multipassionate nature._
 
 ## 3. Target Audience
 - **Who are the users?**  
-  _e.g., students, researchers, customers, collaborators, general public._
+  _The users are friends, classmates and other age mates looking for connections in entrepreneurships._
 
 - **User Needs:**  
-  _What they expect to accomplish using this product._
+  _Have a glimpse on my skillset._
 
 ## 4. Key Features / Requirements
 - **Must-Have Features:**  
-  - Feature 1  
-  - Feature 2  
-  - Feature 3  
+  - A message box to contact me
+  - A link to my LinkedIn
+  - A headshot of me 
 
 - **Nice-to-Have Features (Optional):**  
-  - Feature A  
-  - Feature B  
+  - An animated cover at the top of the website  
 
 ## 5. Design & User Experience
 - **Visual Style / Vibe:**  
-  _Minimalist, playful, professional, bold, etc._
+  _It should be both minimalist and professional._
 
 - **Branding / Colors / Fonts:**  
-  _Any specific guidelines or references._
+  _I am aiming for darker palette._
 
 - **Accessibility Considerations:**  
-  _e.g., color contrast, alt text for images, screen reader compatibility._
+  _The color of the text should merge well with the dark background for ease of read._
 
 ## 6. Content Requirements
 - **Pages / Sections:**  
@@ -47,27 +46,27 @@
   - About / Bio  
   - Projects / Portfolio  
   - Contact  
-  - _(other sections as needed)_  
+  - Interests  
 
 - **Specific Content to Include:**  
-  _Copy, images, links, downloads, etc._
+  _Links to my social and a headshot_
 
 ## 7. Technical Constraints
 - **Technology Stack:**  
-  _Plain HTML/CSS/JS, React, etc._
+  _Plain HTML._
 
 - **Hosting / Deployment:**  
-  _GitHub Pages, custom server, etc._
+  _Write this website such as it can deployed through Github pages_
 
 - **Performance / Security Requirements:**  
-  _e.g., mobile responsive, SSL, fast loading times._
+  _ easily accessible on mobile, fast loading times._
 
 ## 8. Out of Scope
-- _List what this product will **not** include, to prevent scope creep._
+- Do not include my phone number nor my current address for safety purposes._
 
 ## 9. Acceptance Criteria
 - _How you’ll know the product is complete — measurable standards._  
-  - Loads in under X seconds  
+  - Loads in under 5 seconds  
   - Mobile responsive on iOS/Android  
   - All main features work as described  
   - Accessibility checks passed  
