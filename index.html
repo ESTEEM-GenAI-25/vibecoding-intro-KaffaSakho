@@ -1,162 +1,177 @@
-// Next.js (app router): app/page.jsx  |  For CRA/Vite: src/App.jsx (then export default App)
-import React from "react";
-
-const PROFILE = {
-  name: "Kaffa Sakho",
-  title: "Tech Enthusiast • Strategist • Builder",
-  tagline:
-    "ESTEEM @ Notre Dame | Healthtech innovation • Strategy consulting • Data-driven storytelling",
-  location: "South Bend, IN",
-  email: "asakho@nd.edu",
-  phone: "+1 (000) 000-0000",
-  headshotAlt: "Kaffa Sakho portrait",
-  headshotUrl: "/Linkedin-photo.jpeg",
-  socials: [
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/kaffa-sakho-a485b89b/" },
-  ],
-};
-
-const Section = ({ id, title, children }) => (
-  <section id={id} style={{maxWidth: 1000, margin: "0 auto", padding: "64px 16px"}}>
-    <div style={{display:"flex", alignItems:"flex-end", gap:16, marginBottom:24}}>
-      <h2 style={{fontSize:28, fontWeight:600, margin:0}}>{title}</h2>
-      <div style={{height:1, background:"#ddd", flex:1}} />
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kaffa Sakho</title>
+  <style>
+    :root { --fg:#111; --muted:#666; --line:#e5e5e5; --bg:#fff; }
+    *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--fg);background:var(--bg)}
+    a{text-decoration:none;color:inherit}
+    .wrap{max-width:1000px;margin:0 auto;padding:0 16px}
+    header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+    .nav{height:56px;display:flex;align-items:center;justify-content:space-between}
+    .nav-links{display:flex;gap:16px;align-items:center}
+    .btn{display:inline-block;background:#111;color:#fff;padding:10px 14px;border-radius:12px}
+    .pill{border:1px solid var(--line);padding:8px 12px;border-radius:999px;font-size:14px;color:#333}
+    .chip{border:1px solid var(--line);padding:4px 8px;border-radius:999px;font-size:12px;color:#555}
+    .card{border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff}
+    .section{padding:64px 0}
+    .section h2{display:flex;gap:16px;align-items:flex-end;margin:0 0 24px;font-size:28px;font-weight:600}
+    .section h2:after{content:\"\";height:1px;background:var(--line);flex:1}
+    .hero-grad{background:linear-gradient(to bottom, rgba(0,0,0,.03), transparent)}
+    .grid{display:grid;gap:16px}
+    .grid-auto{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .grid-two{grid-template-columns:2fr 1fr}
+    .muted{color:var(--muted)}
+    .tag{display:inline-flex;gap:8px;border:1px solid var(--line);padding:6px 10px;border-radius:999px;font-size:12px;color:var(--muted)}
+    img.headshot{width:100%;height:100%;object-fit:cover}
+    .frame{width:360px;aspect-ratio:4/3;overflow:hidden;border-radius:24px;border:1px solid var(--line);box-shadow:0 2px 12px rgba(0,0,0,.05)}
+    footer{border-top:1px solid var(--line);margin-top:48px;color:#777}
+    footer .inner{padding:24px 0;display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap}
+    @media (max-width:900px){ .grid-two{grid-template-columns:1fr} .frame{width:100%} }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a href="#home" style="font-weight:600">Kaffa Sakho</a>
+      <nav class="nav-links">
+        <a href="#about" class="muted">About</a>
+        <a href="#projects" class="muted">Work</a>
+        <a href="#writing" class="muted">Writing</a>
+        <a href="#contact" class="btn">Let’s talk</a>
+      </nav>
     </div>
-    {children}
-  </section>
-);
+  </header>
 
-function Hero() {
-  return (
-    <div style={{background:"linear-gradient(to bottom, rgba(0,0,0,0.03), transparent)"}}>
-      <div style={{maxWidth:1000, margin:"0 auto", padding:"80px 16px 48px"}}>
-        <div style={{display:"grid", gap:24, gridTemplateColumns:"1fr", alignItems:"center"}}>
+  <main id="home">
+    <div class="hero-grad">
+      <div class="wrap" style="padding:80px 0 48px">
+        <div class="grid" style="align-items:center">
           <div>
-            <div style={{display:"inline-flex", gap:8, border:"1px solid #e5e5e5", padding:"6px 10px", borderRadius:999, fontSize:12, color:"#666"}}>
-              ESTEEM @ Notre Dame
-            </div>
-            <h1 style={{fontSize:42, lineHeight:1.1, margin:"12px 0 0"}}>{PROFILE.name}</h1>
-            <p style={{margin:"8px 0 0", fontSize:18, color:"#555"}}>{PROFILE.title}</p>
-            <p style={{margin:"12px 0 0", maxWidth:640, color:"#666"}}>{PROFILE.tagline}</p>
+            <div class="tag">ESTEEM @ Notre Dame</div>
+            <h1 style="font-size:42px;line-height:1.1;margin:12px 0 0">Kaffa Sakho</h1>
+            <p class="muted" style="margin:8px 0 0;font-size:18px">Tech Enthusiast • Strategist • Builder</p>
+            <p class="muted" style="margin:12px 0 0;max-width:640px">
+              ESTEEM @ Notre Dame | Healthtech innovation • Strategy consulting • Data-driven storytelling
+            </p>
 
-            <div style={{display:"flex", gap:12, flexWrap:"wrap", marginTop:16}}>
-              <a href="#contact" style={btnPrimary}>Contact</a>
-              {PROFILE.socials.map(s => (
-                <a key={s.label} href={s.href} target="_blank" rel="noopener"
-                   style={{...pill, fontSize:14}}> {s.label} </a>
-              ))}
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px">
+              <a href="#contact" class="btn">Contact</a>
+              <a class="pill" target="_blank" href="https://www.linkedin.com/in/kaffa-sakho-a485b89b/">LinkedIn</a>
             </div>
 
-            <div style={{display:"flex", gap:8, color:"#666", fontSize:14, marginTop:12}}>
-              <span>📍</span> {PROFILE.location}
-            </div>
+            <div class="muted" style="display:flex;gap:8px;margin-top:12px">📍 South Bend, IN</div>
           </div>
 
-          <div style={{justifySelf:"center"}}>
-            <div style={{
-              width:360, aspectRatio:"4 / 3", overflow:"hidden",
-              borderRadius:24, border:"1px solid #e5e5e5", boxShadow:"0 2px 12px rgba(0,0,0,0.05)"
-            }}>
-              <img src={PROFILE.headshotUrl} alt={PROFILE.headshotAlt}
-                   style={{width:"100%", height:"100%", objectFit:"cover"}} />
+          <div style="justify-self:center">
+            <div class="frame">
+              <img class="headshot" src="Linkedin-photo.jpeg" alt="Kaffa Sakho portrait" />
             </div>
           </div>
         </div>
 
-        {/* Highlights */}
-        <div style={{display:"grid", gap:16, gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))", marginTop:24}}>
-          {[
-            {title:"Pravida Health Capstone", text:"Designing a predictive–preventive longevity platform; 50+ stakeholder interviews across the U.S."},
-            {title:"Strategy & Finance", text:"Contributed to Senegal’s Industrial & Trade Policy 2050; business plan for the country's first digital park."},
-            {title:"Author", text:"Poetry book — Etcetera: A Conversation About Love."},
-          ].map((h, i) => (
-            <div key={i} style={card}>
-              <div style={{fontWeight:600, marginBottom:6}}>{h.title}</div>
-              <div style={{color:"#666", fontSize:14}}>{h.text}</div>
-            </div>
-          ))}
+        <!-- Highlights -->
+        <div class="grid grid-auto" style="margin-top:24px">
+          <div class="card">
+            <div style="font-weight:600;margin-bottom:6px">Pravida Health Capstone</div>
+            <div class="muted" style="font-size:14px">Designing a predictive–preventive longevity platform; 50+ stakeholder interviews across the U.S.</div>
+          </div>
+          <div class="card">
+            <div style="font-weight:600;margin-bottom:6px">Strategy & Finance</div>
+            <div class="muted" style="font-size:14px">Contributed to Senegal’s Industrial & Trade Policy 2050 and the first digital park business plan.</div>
+          </div>
+          <div class="card">
+            <div style="font-weight:600;margin-bottom:6px">Author</div>
+            <div class="muted" style="font-size:14px">Poetry book — <i>Etcetera: A Conversation About Love</i>.</div>
+          </div>
         </div>
       </div>
     </div>
-  );
-}
 
-function Projects() {
-  const PROJECTS = [
-    {title:"Pravida Health — Capstone", role:"Product research & strategy", year:"2025–26",
-     description:"Validating problems for preventative, personalized, innovative executive health services.",
-     tags:["Healthtech","Longevity"], link:"#"},
-    {title:"Hereditary Health Platform", role:"Founder", year:"2025",
-     description:"Family health tree + guidance to surface hereditary risks and better conversations before marriage.",
-     tags:["Genetics","IoT","UX Research"], link:"#"},
-    {title:"Industrial & Trade Policy 2050", role:"Strategy Consultant (A&A)", year:"2024–25",
-     description:"Contributed to Senegal’s national policy; SME finance, industrialization, ecosystem design.",
-     tags:["Policy","Strategy","Finance"], link:"#"},
-  ];
-  return (
-    <Section id="projects" title="Selected Work">
-      <div style={{display:"grid", gap:16, gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))"}}>
-        {PROJECTS.map((p, i) => (
-          <div key={i} style={card}>
-            <div style={{display:"flex", justifyContent:"space-between", alignItems:"baseline", gap:12}}>
+    <section id="projects" class="section">
+      <div class="wrap">
+        <h2>Selected Work</h2>
+        <div class="grid grid-auto">
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline">
               <div>
-                <div style={{fontWeight:600}}>{p.title}</div>
-                <div style={{color:"#666", fontSize:13}}>{p.role} • {p.year}</div>
+                <div style="font-weight:600">Pravida Health — Capstone</div>
+                <div class="muted" style="font-size:13px">Product research & strategy • 2025–26</div>
               </div>
-              <a href={p.link} style={btnGhost}>View →</a>
+              <a href="#" class="pill" style="padding:6px 10px">View →</a>
             </div>
-            <p style={{color:"#666", fontSize:14, margin:"8px 0"}}>{p.description}</p>
-            <div style={{display:"flex", gap:8, flexWrap:"wrap"}}>
-              {p.tags.map(t => <span key={t} style={chip}>{t}</span>)}
+            <p class="muted" style="font-size:14px;margin:8px 0">Validating problems for preventative, personalized, innovative executive health services.</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <span class="chip">Healthtech</span><span class="chip">Longevity</span>
             </div>
           </div>
-        ))}
-      </div>
-    </Section>
-  );
-}
 
-function Writing() {
-  const WRITING = [
-    {title:"Etcetera, A Conversation about Love", date:"Jan 2021",
-     url:"https://www.amazon.com/Etcetera-Conversation-about-Kaffa-Sakho-ebook/dp/B08TB7LR1D?ref_=ast_author_mpb"},
-  ];
-  return (
-    <Section id="writing" title="Writing & Press">
-      <div style={{display:"grid", gap:16, gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))"}}>
-        {WRITING.map((w,i)=>(
-          <div key={i} style={card}>
-            <div style={{fontWeight:600}}>{w.title}</div>
-            <div style={{color:"#666", fontSize:12, marginBottom:8}}>{w.date}</div>
-            <a href={w.url} target="_blank" rel="noopener" style={btnSecondary}>Read →</a>
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline">
+              <div>
+                <div style="font-weight:600">Hereditary Health Platform</div>
+                <div class="muted" style="font-size:13px">Founder • 2025</div>
+              </div>
+              <a href="#" class="pill" style="padding:6px 10px">View →</a>
+            </div>
+            <p class="muted" style="font-size:14px;margin:8px 0">Family health tree + guidance to surface hereditary risks and better conversations before marriage.</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <span class="chip">Genetics</span><span class="chip">IoT</span><span class="chip">UX Research</span>
+            </div>
           </div>
-        ))}
-      </div>
-    </Section>
-  );
-}
 
-function About() {
-  return (
-    <Section id="about" title="About">
-      <div style={{display:"grid", gap:24, gridTemplateColumns:"2fr 1fr"}}>
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline">
+              <div>
+                <div style="font-weight:600">Industrial & Trade Policy 2050</div>
+                <div class="muted" style="font-size:13px">Strategy Consultant (A&A) • 2024–25</div>
+              </div>
+              <a href="#" class="pill" style="padding:6px 10px">View →</a>
+            </div>
+            <p class="muted" style="font-size:14px;margin:8px 0">National policy: SME finance, industrialization, ecosystem design.</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <span class="chip">Policy</span><span class="chip">Strategy</span><span class="chip">Finance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="writing" class="section">
+      <div class="wrap">
+        <h2>Writing & Press</h2>
+        <div class="grid grid-auto">
+          <div class="card">
+            <div style="font-weight:600">Etcetera, A Conversation about Love</div>
+            <div class="muted" style="font-size:12px;margin-bottom:8px">Jan 2021</div>
+            <a class="pill" target="_blank" href="https://www.amazon.com/Etcetera-Conversation-about-Kaffa-Sakho-ebook/dp/B08TB7LR1D?ref_=ast_author_mpb">Read →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="wrap grid grid-two">
         <div>
-          <p style={{color:"#555", lineHeight:1.7}}>
+          <h2>About</h2>
+          <p class="muted" style="line-height:1.7">
             I’m a Senegalese strategist and builder blending healthtech, finance, and product thinking. I communicate with
             clarity, ask smart questions, and ship. I’m currently pursuing the ESTEEM master’s at Notre Dame while leading a
             capstone with Pravida Health to shape a predictive–preventive longevity platform. Previously, I helped design
             Senegal’s Industrial & Trade Policy 2050 and created the $80M business case for the country’s first Digital Park.
           </p>
-          <ul style={{display:"grid", gap:8, gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))", marginTop:16}}>
+          <ul style="display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:16px">
             <li><b>Zone of genius:</b> health & wellness, beauty products, writing</li>
             <li><b>Interests:</b> early disease detection, wearables, AI/LLMs</li>
             <li><b>Current goals:</b> launch a product in 2025 and publish a book</li>
             <li><b>Languages:</b> English, French (native), Wolof</li>
           </ul>
         </div>
-        <div style={card}>
-          <div style={{fontWeight:600, marginBottom:8}}>Capabilities</div>
-          <ul style={{color:"#555", fontSize:14, margin:0, paddingLeft:18}}>
+        <div class="card">
+          <div style="font-weight:600;margin-bottom:8px">Capabilities</div>
+          <ul class="muted" style="font-size:14px;margin:0;padding-left:18px">
             <li>Customer discovery & founder-led sales</li>
             <li>Product strategy & narrative design</li>
             <li>Financial modeling & KPI dashboards</li>
@@ -164,103 +179,49 @@ function About() {
           </ul>
         </div>
       </div>
-    </Section>
-  );
-}
+    </section>
 
-function Contact() {
-  return (
-    <Section id="contact" title="Get in Touch">
-      <div style={{display:"grid", gap:24, gridTemplateColumns:"2fr 1fr", alignItems:"start"}}>
-        <div style={card}>
-          <div style={{fontWeight:600, marginBottom:8}}>Let’s build something meaningful</div>
-          <form action={`mailto:${PROFILE.email}`} method="post" encType="text/plain"
-                style={{display:"grid", gap:12, gridTemplateColumns:"1fr 1fr"}}>
-            <input name="name" placeholder="Your name" required style={input} />
-            <input name="email" placeholder="Your email" required style={input} />
-            <input name="subject" placeholder="Subject" style={{...input, gridColumn:"1 / -1"}} />
-            <textarea name="message" placeholder="Your message" style={{...input, gridColumn:"1 / -1", minHeight:120}} />
-            <button type="submit" style={{...btnPrimary, gridColumn:"1 / -1"}}>Send →</button>
+    <section id="contact" class="section">
+      <div class="wrap grid grid-two" style="align-items:start">
+        <div class="card">
+          <div style="font-weight:600;margin-bottom:8px">Let’s build something meaningful</div>
+          <form action="mailto:asakho@nd.edu" method="post" enctype="text/plain"
+                style="display:grid;gap:12px;grid-template-columns:1fr 1fr">
+            <input name="name" placeholder="Your name" required style="border:1px solid #e0e0e0;padding:10px 12px;border-radius:10px;font-size:14px" />
+            <input name="email" placeholder="Your email" required style="border:1px solid #e0e0e0;padding:10px 12px;border-radius:10px;font-size:14px" />
+            <input name="subject" placeholder="Subject" style="border:1px solid #e0e0e0;padding:10px 12px;border-radius:10px;font-size:14px;grid-column:1/-1" />
+            <textarea name="message" placeholder="Your message" style="border:1px solid #e0e0e0;padding:10px 12px;border-radius:10px;font-size:14px;grid-column:1/-1;min-height:120px"></textarea>
+            <button type="submit" class="btn" style="grid-column:1/-1">Send →</button>
           </form>
-          <p style={{marginTop:8, color:"#777", fontSize:12}}>
-            This uses your email client. For reliable delivery, replace with a form handler later.
-          </p>
+          <p class="muted" style="margin-top:8px;font-size:12px">This uses your email client. For reliable delivery, replace with a form handler later.</p>
         </div>
-
         <div>
-          <div style={{display:"grid", gap:8}}>
-            <div>📧 {PROFILE.email}</div>
-            <div>📞 {PROFILE.phone}</div>
-            <div>📍 {PROFILE.location}</div>
+          <div style="display:grid;gap:8px">
+            <div>📧 asakho@nd.edu</div>
+            <div>📞 +1 (000) 000-0000</div>
+            <div>📍 South Bend, IN</div>
             <div>🤝 Open to: PM / Strategy / Healthtech</div>
           </div>
-          <div style={{display:"flex", gap:8, flexWrap:"wrap", marginTop:12}}>
-            {PROFILE.socials.map(s => (
-              <a key={s.label} href={s.href} target="_blank" rel="noopener" style={pill}>{s.label}</a>
-            ))}
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+            <a class="pill" target="_blank" href="https://www.linkedin.com/in/kaffa-sakho-a485b89b/">LinkedIn</a>
           </div>
         </div>
       </div>
-    </Section>
-  );
-}
+    </section>
+  </main>
 
-function Footer() {
-  return (
-    <footer style={{borderTop:"1px solid #eee", marginTop:48}}>
-      <div style={{maxWidth:1000, margin:"0 auto", padding:"24px 16px", color:"#777", fontSize:14,
-                   display:"flex", gap:12, justifyContent:"space-between", flexWrap:"wrap"}}>
-        <div>© {new Date().getFullYear()} {PROFILE.name}. All rights reserved.</div>
-        <div style={{display:"flex", gap:16}}>
-          <a href="#about" style={link}>About</a>
-          <a href="#projects" style={link}>Work</a>
-          <a href="#writing" style={link}>Writing</a>
-          <a href="#contact" style={link}>Contact</a>
-        </div>
+  <footer>
+    <div class="wrap inner">
+      <div>© <span id="yr"></span> Kaffa Sakho. All rights reserved.</div>
+      <div style="display:flex;gap:16px">
+        <a href="#about" class="muted">About</a>
+        <a href="#projects" class="muted">Work</a>
+        <a href="#writing" class="muted">Writing</a>
+        <a href="#contact" class="muted">Contact</a>
       </div>
-    </footer>
-  );
-}
-
-const headerWrap = {
-  position:"sticky", top:0, zIndex:40, width:"100%",
-  borderBottom:"1px solid #eee", backdropFilter:"blur(6px)", background:"rgba(255,255,255,0.8)"
-};
-const navLink = {fontSize:14, color:"#666", textDecoration:"none"};
-const link = {color:"#666", textDecoration:"none"};
-const btnPrimary = {background:"#111", color:"#fff", padding:"10px 14px", borderRadius:12, textDecoration:"none"};
-const btnSecondary = {background:"#f5f5f5", color:"#111", padding:"8px 12px", borderRadius:10, textDecoration:"none", display:"inline-block"};
-const btnGhost = {border:"1px solid #e5e5e5", padding:"6px 10px", borderRadius:10, textDecoration:"none", color:"#333"};
-const pill = {border:"1px solid #e5e5e5", padding:"8px 12px", borderRadius:999, textDecoration:"none", color:"#333"};
-const chip = {border:"1px solid #e5e5e5", padding:"4px 8px", borderRadius:999, fontSize:12, color:"#555"};
-const card = {border:"1px solid #e5e5e5", borderRadius:16, padding:16, background:"#fff"};
-const input = {border:"1px solid #e0e0e0", padding:"10px 12px", borderRadius:10, fontSize:14, width:"100%"};
-
-export default function Page() {
-  return (
-    <div style={{minHeight:"100vh", color:"#111", background:"#fff"}}>
-      <header style={headerWrap}>
-        <div style={{maxWidth:1000, margin:"0 auto", height:56, padding:"0 16px",
-                     display:"flex", alignItems:"center", justifyContent:"space-between"}}>
-          <a href="#home" style={{fontWeight:600, textDecoration:"none", color:"#111"}}>{PROFILE.name}</a>
-          <nav style={{display:"flex", gap:16}}>
-            <a href="#about" style={navLink}>About</a>
-            <a href="#projects" style={navLink}>Work</a>
-            <a href="#writing" style={navLink}>Writing</a>
-            <a href="#contact" style={{...btnPrimary, padding:"8px 12px"}}>Let’s talk</a>
-          </nav>
-        </div>
-      </header>
-
-      <main id="home">
-        <Hero />
-        <About />
-        <Projects />
-        <Writing />
-        <Contact />
-      </main>
-
-      <Footer />
     </div>
-  );
-}
+  </footer>
+
+  <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+</body>
+</html>
