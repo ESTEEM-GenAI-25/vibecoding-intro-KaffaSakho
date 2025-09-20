@@ -6,191 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Personal website of Kaffa Sakho." />
   <style>
-    :root{
-      --bg:#0b0c10;--fg:#e8e8e8;--muted:#a7a7a7;--card:#14161a;--accent:#4aa3ff;--accent-2:#9ad1ff;
-      --shadow:0 10px 30px rgba(0,0,0,.35)
-    }
-    :root.light{
-      --bg:#f9fafb;--fg:#0f172a;--muted:#475569;--card:#ffffff;--accent:#2563eb;--accent-2:#60a5fa;
-      --shadow:0 8px 24px rgba(2,6,23,.08)
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
-      background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased;scroll-behavior:smooth
-    }
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
+    :root{--bg:#0b0c10;--fg:#e8e8e8;--muted:#a7a7a7;--card:#14161a;--accent:#4aa3ff;--accent-2:#9ad1ff;--shadow:0 10px 30px rgba(0,0,0,.35)}
+    :root.light{--bg:#f9fafb;--fg:#0f172a;--muted:#475569;--card:#ffffff;--accent:#2563eb;--accent-2:#60a5fa;--shadow:0 8px 24px rgba(2,6,23,.08)}
+    *{box-sizing:border-box}html,body{height:100%}
+    body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
     .container{max-width:980px;margin:0 auto;padding:28px}
     header{position:sticky;top:0;background:color-mix(in oklab,var(--bg) 92%, transparent);backdrop-filter:blur(10px);z-index:10;border-bottom:1px solid color-mix(in oklab,var(--muted) 20%, transparent)}
     .nav{display:flex;align-items:center;gap:14px;justify-content:space-between}
     .nav a{padding:10px 12px;border-radius:10px}
     .nav a[aria-current="page"], .nav a:hover{background:color-mix(in oklab,var(--accent) 18%, transparent);text-decoration:none}
     .brand{display:flex;align-items:center;gap:10px;font-weight:700}
-    .avatar{
-      width:36px;height:36px;border-radius:50%;display:inline-grid;place-items:center;
-      background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;font-weight:800
-    }
+    .avatar{width:36px;height:36px;border-radius:50%;display:inline-grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;font-weight:800}
     .theme{border:0;background:color-mix(in oklab,var(--card) 92%, transparent);color:var(--fg);padding:10px 12px;border-radius:10px;cursor:pointer}
     .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:40px 0}
     @media (max-width:880px){.hero{grid-template-columns:1fr}}
-    .card{
-      background:var(--card);border-radius:16px;padding:22px;box-shadow:var(--shadow);border:1px solid color-mix(in oklab,var(--muted) 16%, transparent)
-    }
+    .card{background:var(--card);border-radius:16px;padding:22px;box-shadow:var(--shadow);border:1px solid color-mix(in oklab,var(--muted) 16%, transparent)}
     h1{font-size:clamp(28px,4vw,40px);line-height:1.15;margin:0 0 10px}
     h2{font-size:clamp(22px,3vw,28px);margin:0 0 8px}
     .lead{color:var(--muted);margin:0 0 18px}
     .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
     .btn{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:10px 14px;border:1px solid color-mix(in oklab,var(--accent) 35%, transparent)}
     .btn.primary{background:var(--accent);color:white;border-color:transparent}
-    .media{aspect-ratio:1/1;border-radius:16px;overflow:hidden;background:radial-gradient(120% 120% at 0% 0%, var(--accent-2), var(--card));display:grid;place-items:center}
-    .media img{width:100%;height:100%;object-fit:cover;display:block}
-    .grid{display:grid;gap:18px;grid-template-columns:repeat(12,1fr)}
-    .span-6{grid-column:span 6}
-    .span-4{grid-column:span 4}
-    .span-12{grid-column:span 12}
-    @media (max-width:880px){.span-6,.span-4{grid-column:span 12}}
-    ul.clean{list-style:none;padding:0;margin:0;display:grid;gap:12px}
-    .kpi{display:flex;gap:16px}
-    .kpi div{flex:1;background:var(--card);border:1px solid color-mix(in oklab,var(--muted) 16%, transparent);border-radius:14px;padding:16px;text-align:center}
-    footer{padding:40px 0;color:var(--muted);font-size:14px}
-    .muted{color:var(--muted)}
-    .pill{display:inline-block;border:1px solid color-mix(in oklab,var(--muted) 35%, transparent);padding:6px 10px;border-radius:999px;font-size:13px}
-    /* Anchor offset */
-    :target{scroll-margin-top:80px}
-  </style>
-</head>
-<body>
-  <header>
-    <div class="container nav">
-      <div class="brand">
-        <div class="avatar" aria-hidden="true">KS</div>
-        <span>Kaffa Sakho</span>
-      </div>
-      <nav aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-        <button id="themeToggle" class="theme" type="button" aria-label="Toggle theme">Toggle</button>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container">
-    <section class="hero">
-      <div class="card">
-        <h1>Building health, data, and product ideas.</h1>
-        <p class="lead">Graduate student in Engineering, Science & Technology Entrepreneurship at the University of Notre Dame. Background in strategy and finance. Focus on preventive health and usable data.</p>
-        <div class="cta">
-          <a class="btn primary" href="#contact">Contact</a>
-          <a class="btn" href="https://www.linkedin.com/in/kaffa-sakho-a485b89b/" target="_blank" rel="noopener">LinkedIn</a>
-          <span class="pill">Based in Indiana</span>
-        </div>
-      </div>
-      <div class="media card" aria-label="Profile photo">
-        <!-- Optional: replace /assets/headshot.jpg with your image path in the repo -->
-        <!-- If no image is present, initials remain visible via CSS background -->
-        <img src="/assets/headshot.jpg" alt="Photo of Kaffa Sakho" onerror="this.style.display='none';this.parentElement.innerHTML='<div style=&quot;font-size:56px;font-weight:800;&quot;>KS</div>'">
-      </div>
-    </section>
-
-    <section id="about" class="card">
-      <h2>About</h2>
-      <p>I study tech innovation and build user-centered tools. I like clear problem definitions, fast iteration, and measurable outcomes. Areas: wearable data, longevity, and SME financing models.</p>
-      <div class="kpi" style="margin-top:14px">
-        <div><div class="muted">Focus</div><div><strong>Preventive Health</strong></div></div>
-        <div><div class="muted">Strength</div><div><strong>Communication</strong></div></div>
-        <div><div class="muted">Tooling</div><div><strong>Spreadsheets & Prototypes</strong></div></div>
-      </div>
-    </section>
-
-    <section id="projects" class="grid" aria-label="Projects" style="margin-top:22px">
-      <div class="span-12"><h2>Projects</h2></div>
-
-      <article class="card span-6">
-        <h3 style="margin:0 0 6px">Family Health Tree</h3>
-        <p class="muted" style="margin:0 0 10px">Lightweight app to map family history and spot hereditary risks.</p>
-        <ul class="clean">
-          <li>• Rapid prototype with simple onboarding</li>
-          <li>• Clear export for clinicians and caregivers</li>
-        </ul>
-      </article>
-
-      <article class="card span-6">
-        <h3 style="margin:0 0 6px">Wearables to Insights</h3>
-        <p class="muted" style="margin:0 0 10px">Turn raw wearable data into plain-language weekly summaries.</p>
-        <ul class="clean">
-          <li>• Focus on adherence and actionable steps</li>
-          <li>• Privacy-first, user owns data</li>
-        </ul>
-      </article>
-
-      <article class="card span-6">
-        <h3 style="margin:0 0 6px">SME Finance Dashboards</h3>
-        <p class="muted" style="margin:0 0 10px">Models for public-private SME programs and bank partnerships.</p>
-        <ul class="clean">
-          <li>• Sensitivity analysis and clear KPIs</li>
-          <li>• Visual summaries for decision makers</li>
-        </ul>
-      </article>
-
-      <article class="card span-6">
-        <h3 style="margin:0 0 6px">WAW Health</h3>
-        <p class="muted" style="margin:0 0 10px">Women-focused wellness content and simple tracking tools.</p>
-        <ul class="clean">
-          <li>• Rotating routines for ADHD-friendly use</li>
-          <li>• Clean ingredient standards</li>
-        </ul>
-      </article>
-    </section>
-
-    <section id="experience" class="grid" style="margin-top:22px">
-      <div class="span-12"><h2>Experience</h2></div>
-
-      <div class="card span-4">
-        <h3 style="margin:0 0 6px">Strategy & Finance</h3>
-        <p class="muted">Consulting on industry policy, digital parks, and SME programs.</p>
-      </div>
-      <div class="card span-4">
-        <h3 style="margin:0 0 6px">Product & Research</h3>
-        <p class="muted">Interview frameworks, validation, and prototype specs.</p>
-      </div>
-      <div class="card span-4">
-        <h3 style="margin:0 0 6px">Data & Ops</h3>
-        <p class="muted">Dashboards, metrics, and decision tooling.</p>
-      </div>
-    </section>
-
-    <section id="contact" class="card" style="margin-top:22px">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:kaffa.sakho+site@proton.me">kaffa.sakho+site@proton.me</a> <span class="muted">(example)</span></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/kaffa-sakho-a485b89b/" target="_blank" rel="noopener">/in/kaffa-sakho-a485b89b/</a></p>
-      <p class="muted">Replace the email with your preferred address.</p>
-    </section>
-
-    <footer>
-      <div class="container" style="padding:0">
-        <div>&copy; <span id="y"></span> Kaffa Sakho</div>
-    </footer>
-  </main>
-
-  <script>
-    // Year
-    document.getElementById('y').textContent=new Date().getFullYear();
-
-    // Theme
-    const root=document.documentElement;
-    const saved=localStorage.getItem('theme');
-    if(saved){ root.classList.toggle('light', saved==='light'); }
-    else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches){
-      root.classList.add('light');
-    }
-    document.getElementById('themeToggle').addEventListener('click', ()=>{
-      root.classList.toggle('light');
-      localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark');
-    });
-  </script>
-</body>
-</html>
+    .media{aspect-ratio
