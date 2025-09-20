@@ -1,19 +1,20 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Mail, Linkedin, Twitter, BookOpen, Sparkles, Briefcase, NotebookPen, MapPin, Phone, FileText, GraduationCap, HeartHandshake } from "lucide-react";
+import { ArrowRight, Mail, Linkedin, BookOpen, Sparkles, Briefcase, MapPin, Phone, GraduationCap, HeartHandshake } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 // ---------- CONFIGURABLE PROFILE DATA ----------
 const PROFILE = {
   name: "Kaffa Sakho",
-  title: "Engineer • Strategist • Builder",
+  title: "Tech Enthusiast • Strategist • Builder",
   tagline:
-    "ESTEEM @ Notre Dame | Healthtech innovation • Strategy consulting",
-  location: "South Bend, IN ",
-  email: "asakho@nd.edu", // replace
-  resumeUrl: "/Adja_Sakho_Resume.pdf", // replace with hosted file
-  headshotAlt: "Adja Sakho portrait",
+    "ESTEEM @ Notre Dame | Healthtech innovation • Strategy consulting • Data-driven storytelling",
+  location: "South Bend, IN",
+  email: "asakho@nd.edu",
+  phone: "+1 (000) 000-0000",
+  headshotAlt: "Kaffa Sakho portrait",
+  headshotUrl: "/Linkedin-photo.jpeg", // uploaded headshot file
   socials: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/kaffa-sakho-a485b89b/", icon: <Linkedin size={18} /> },
   ],
@@ -22,38 +23,46 @@ const PROFILE = {
 const HIGHLIGHTS = [
   {
     icon: <Sparkles className="h-5 w-5" />, 
-    title: "Pravida Health Graduate Capstone Project",
-    text: "Designing the go-to-market strategy for innovative preventive and personalized executive health solutions.",
+    title: "Pravida Health Capstone",
+    text: "Designing a predictive–preventive longevity platform; 50+ stakeholder interviews across the U.S.",
   },
   {
     icon: <Briefcase className="h-5 w-5" />, 
     title: "Strategy & Finance",
-    text: "Co-authored Senegal’s Industrial & Trade Policy 2050; Elaboration of the business plan for Senegal's First Digital Park.",
+    text: "Contributed to the elaboration of Senegal’s Industrial & Trade Policy 2050 and the business plan for the country's first digital park.",
   },
   {
     icon: <BookOpen className="h-5 w-5" />, 
     title: "Author",
-    text: "Poetry book — *Etcetera: A Conversation About Love*",
+    text: "Poetry book — *Etcetera: A Conversation About Love*; building powerful, feminine narratives.",
   },
 ];
 
 const PROJECTS = [
   {
     title: "Pravida Health — Capstone",
-    role: "Graduate Strategy Consultant",
+    role: "Product research & strategy",
     year: "2025–26",
     description:
-      "Validating problems for preventive and personalized executive health solutions.",
-    tags: ["Healthtech", "Longevity", "Personalized Healthcare"],
+      "Validating problems for preventative, personalized, innovative executive health services.",
+    tags: ["Healthtech", "Longevity"],
     link: "#",
   },
-
   {
-    title: "A&A Strategy and Investment Advisory",
-    role: "Strategy Consultant",
+    title: "Hereditary Health Platform",
+    role: "Founder",
+    year: "2025",
+    description:
+      "A family health tree + guidance to surface hereditary risks and better conversations before marriage.",
+    tags: ["Genetics", "IoT", "UX Research"],
+    link: "#",
+  },
+  {
+    title: "Industrial & Trade Policy 2050",
+    role: "Strategy Consultant (A&A)",
     year: "2024–25",
     description:
-      "Contributed to the elaboration of Senegal’s national industrial policy ",
+      "Contributed to Senegal’s national policy presented to the President; SME finance, industrialization, and ecosystem design.",
     tags: ["Policy", "Strategy", "Finance"],
     link: "#",
   },
@@ -61,27 +70,19 @@ const PROJECTS = [
 
 const WRITING = [
   {
-    title: "On Building With Courage",
-    date: "Aug 2025",
-    url: "#",
-    snippet:
-      "Notes from founder-led sales, listening harder than your pitch, and designing with empathy for edge cases.",
-  },
-  {
-    title: "Health, Heritage, and Data",
-    date: "Jul 2025",
-    url: "#",
-    snippet: "Why family health trees can unlock better prevention in emerging markets.",
+    title: "Etcetera, A Conversation about Love",
+    date: "Jan 2021",
+    url: "https://www.amazon.com/Etcetera-Conversation-about-Kaffa-Sakho-ebook/dp/B08TB7LR1D?ref_=ast_author_mpb",
   },
 ];
 
-const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
+const NavLink = ({ href, children }) => (
   <a href={href} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
     {children}
   </a>
 );
 
-const Section = ({ id, title, children }: { id: string; title: string; children: React.ReactNode }) => (
+const Section = ({ id, title, children }) => (
   <section id={id} className="max-w-6xl mx-auto px-4 py-16 sm:py-24">
     <div className="flex items-end justify-between gap-4 mb-8">
       <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">{title}</h2>
@@ -115,11 +116,6 @@ const Hero = () => (
             <Button asChild>
               <a href="#contact" className="inline-flex items-center gap-2"><Mail size={16} /> Contact</a>
             </Button>
-            <Button variant="secondary" asChild>
-              <a href={PROFILE.resumeUrl} target="_blank" rel="noopener" className="inline-flex items-center gap-2">
-                <FileText size={16} /> Resume
-              </a>
-            </Button>
             {PROFILE.socials.map((s) => (
               <a
                 key={s.label}
@@ -145,13 +141,11 @@ const Hero = () => (
           className="flex-1 w-full"
         >
           <div className="relative mx-auto aspect-[4/3] w-full max-w-md overflow-hidden rounded-3xl border bg-gradient-to-br from-background to-muted/50 shadow-sm">
-            {/* Headshot placeholder block. Replace with an <img> */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center p-6">
-                <div className="text-7xl">🧠</div>
-                <p className="mt-3 text-sm text-muted-foreground">Add a professional headshot here.</p>
-              </div>
-            </div>
+            <img
+              src={PROFILE.headshotUrl}
+              alt={PROFILE.headshotAlt}
+              className="object-cover w-full h-full"
+            />
           </div>
         </motion.div>
       </div>
@@ -214,28 +208,11 @@ const Writing = () => (
             <p className="text-xs text-muted-foreground">{w.date}</p>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-muted-foreground mb-4">{w.snippet}</p>
             <Button variant="secondary" asChild>
               <a href={w.url} target="_blank" rel="noopener" className="inline-flex items-center gap-2">
                 Read <ArrowRight size={16} />
               </a>
             </Button>
-          </CardContent>
-        </Card>
-      ))}
-    </div>
-  </Section>
-);
-
-const Testimonials = () => (
-  <Section id="testimonials" title="What People Say">
-    <div className="grid md:grid-cols-2 gap-6">
-      {TESTIMONIALS.map((t, i) => (
-        <Card key={i} className="border-muted-foreground/20">
-          <CardContent className="pt-6">
-            <p className="text-base leading-relaxed">“{t.quote}”</p>
-            <p className="mt-4 text-sm font-medium">{t.name}</p>
-            <p className="text-xs text-muted-foreground">{t.title}</p>
           </CardContent>
         </Card>
       ))}
@@ -347,7 +324,6 @@ export default function PersonalSite() {
         <About />
         <Projects />
         <Writing />
-        <Testimonials />
         <Contact />
       </main>
 
@@ -355,4 +331,3 @@ export default function PersonalSite() {
     </div>
   );
 }
-
